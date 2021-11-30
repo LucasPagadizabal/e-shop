@@ -36,7 +36,7 @@ mongoose
   .connect(process.env.CONNECTION_STRING, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    dbName: "mean-eshop",
+    dbName: process.env.DB_NAME,
   })
   .then(() => {
     console.log("Database Connection is ready...");
@@ -45,7 +45,8 @@ mongoose
     console.log(err);
   });
 
+  const port = process.env.DB_NAME || 3000;
 //Server
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("server is running http://localhost:3000");
 });
